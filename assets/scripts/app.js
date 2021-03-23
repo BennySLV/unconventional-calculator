@@ -64,3 +64,27 @@ const createAndWriteOutput = (
 	const calculationDescription = `${resultBeforeCalculation} ${operator} ${calculateNumber}`;
 	outputResult(currentResult, calculationDescription);
 };
+
+/**
+ * Log all calculations to the console.
+ *
+ * @param {string} operationIdentifier
+ * @param {integer} previousResult
+ * @param {integer} operationNumber
+ * @param {integer} newResult
+ */
+const writeToLog = (
+	operationIdentifier,
+	previousResult,
+	operationNumber,
+	newResult
+) => {
+	const logEntry = {
+		operation: operationIdentifier,
+		previousResult: previousResult,
+		number: operationNumber,
+		result: newResult,
+	};
+	logEntries.push(logEntry);
+	console.log(logEntries);
+};
