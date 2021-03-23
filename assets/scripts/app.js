@@ -19,3 +19,12 @@ let logEntries = [];
 const getUserNumberInput = () => {
 	return parseInt(userInput.value);
 };
+
+const createAndWriteOutput = (
+	operator,
+	resultBeforeCalculation,
+	calculateNumber
+) => {
+	const calculationDescription = `${resultBeforeCalculation} ${operator} ${calculateNumber}`;
+	outputResult(currentResult, calculationDescription);
+};
