@@ -15,3 +15,7 @@ function outputResult(result, text) {
 const defaultResult = 0;
 let currentResult = defaultResult;
 let logEntries = [];
+
+const getUserNumberInput = () => {
+	return parseInt(userInput.value);
+};
