@@ -88,3 +88,51 @@ const writeToLog = (
 	logEntries.push(logEntry);
 	console.log(logEntries);
 };
+
+/**
+ * Compute the result of a calculation
+ * based on the given operator.
+ *
+ * Then display the output on the screen.
+ *
+ * Also log the calculation and the output
+ * to the console.
+ *
+ * @param {string} calculationType
+ * @returns {null} - if the operator does not exist or no number was entered as input
+ */
+const calculateResult = (calculationType) => {
+	if (
+		(calculationType !== "ADD" &&
+			calculationType !== "SUBTRACT" &&
+			calculationType !== "MULTIPLY" &&
+			calculationType !== "DIVIDE") ||
+		!enteredNumber
+	) {
+		return;
+	} else {
+		const enteredNumber = getUserNumberInput();
+		const initialResult = currentResult;
+		let mathsOperator;
+		if (calculationType === "ADD") {
+			currentResult += enteredNumber;
+			mathsOperator = "+";
+		} else if (calculationType === "SUBTRACT") {
+			currentResult -= enteredNumber;
+			mathsOperator = "-";
+		} else if (calculationType === "MULTIPLY") {
+			currentResult *= enteredNumber;
+			mathsOperator = "*";
+		} else if (calculationType === "DIVIDE") {
+			currentResult /= enteredNumber;
+			mathsOperator = "/";
+		}
+		createAndWriteOutput(mathsOperator, initialResult, enteredNumber);
+		writeToLog(
+			calculationType,
+			initialResult,
+			enteredNumber,
+			currentResult
+		);
+	}
+};
