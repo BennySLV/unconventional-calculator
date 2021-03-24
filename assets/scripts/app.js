@@ -5,7 +5,7 @@
  * application.
  *
  * @author Maximillian Schwarzmueller, Ben Silveston, Stephen Yeboah
- *
+ * @version 1.0
  */
 
 const userInput = document.getElementById("input-number");
@@ -42,7 +42,7 @@ let logEntries = [];
  * integers and floating-point
  * numbers.
  *
- * @returns {integer} The user input
+ * @returns {integer} - The user input
  */
 const getUserNumberInput = () => {
 	return parseInt(userInput.value);
@@ -52,9 +52,9 @@ const getUserNumberInput = () => {
  * Create and write the output
  * for the given calculation.
  *
- * @param {string} operator
- * @param {integer} resultBeforeCalculation
- * @param {integer} calculateNumber
+ * @param {string} operator - The operator used in the calculation
+ * @param {integer} resultBeforeCalculation - The result before the next calculation
+ * @param {integer} calculateNumber - The number to be used next in the calculation
  */
 const createAndWriteOutput = (
 	operator,
@@ -68,10 +68,10 @@ const createAndWriteOutput = (
 /**
  * Log all calculations to the console.
  *
- * @param {string} operationIdentifier
- * @param {integer} previousResult
- * @param {integer} operationNumber
- * @param {integer} newResult
+ * @param {string} operationIdentifier - The operation used in the specific calculation
+ * @param {integer} previousResult - The result from the previous calculation
+ * @param {integer} operationNumber - The second number used in the calculation (i.e. after the operator)
+ * @param {integer} newResult - The updated result from the latest calculation
  */
 const writeToLog = (
 	operationIdentifier,
@@ -98,7 +98,7 @@ const writeToLog = (
  * Also log the calculation and the output
  * to the console.
  *
- * @param {string} calculationType
+ * @param {string} calculationType - The type of calculation used
  * @returns {null} - if the operator does not exist or no number was entered as input
  */
 const calculateResult = (calculationType) => {
