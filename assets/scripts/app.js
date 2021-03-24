@@ -163,7 +163,7 @@ const divide = () => {
 };
 
 /**
- * Compute the given calculator
+ * Compute the given calculation
  * based on the given set of numbers.
  *
  * Like the individual operator functions above,
@@ -179,18 +179,38 @@ const calculate = (operation) => {
 	if (operation === "ADD") {
 		currentResult += enteredNumber;
 		operator = "+";
+		clearInput();
 	} else if (operation === "SUBTRACT") {
 		currentResult -= enteredNumber;
 		operator = "-";
+		clearInput();
 	} else if (operation === "MULTIPLY") {
 		currentResult *= enteredNumber;
 		operator = "*";
+		clearInput();
 	} else if (operation === "DIVIDE") {
 		currentResult /= enteredNumber;
 		operator = "/";
+		clearInput();
 	}
 	createAndWriteOutput(operator, initialResult, enteredNumber);
 	writeToLog(operation, initialResult, enteredNumber, currentResult);
+};
+
+/**
+ * Clear the input box before
+ * entering the next number
+ * in the calculation.
+ *
+ * Note that this
+ * DOES NOT clear the result
+ * and therefore re-start the
+ * entire calculation.
+ */
+const clearInput = () => {
+	if (userInput.value !== "") {
+		userInput.value = "";
+	}
 };
 
 /**
