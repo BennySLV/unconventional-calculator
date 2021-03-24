@@ -161,6 +161,37 @@ const divide = () => {
 	calculateResult("DIVIDE");
 };
 
+/**
+ * Compute the given calculator
+ * based on the given set of numbers.
+ *
+ * Like the individual operator functions above,
+ * this function will be used as part of the
+ * binding process during the program execution.
+ *
+ * @param {string} operation - The operator used in the calculation
+ */
+const calculate = (operation) => {
+	const enteredNumber = getUserNumberInput();
+	const initialResult = currentResult;
+	let operator;
+	if (operation === "ADD") {
+		currentResult += enteredNumber;
+		operator = "+";
+	} else if (operation === "SUBTRACT") {
+		currentResult -= enteredNumber;
+		operator = "-";
+	} else if (operation === "MULTIPLY") {
+		currentResult *= enteredNumber;
+		operator = "*";
+	} else if (operation === "DIVIDE") {
+		currentResult /= enteredNumber;
+		operator = "/";
+	}
+	createAndWriteOutput(operator, initialResult, enteredNumber);
+	writeToLog(operation, initialResult, enteredNumber, currentResult);
+};
+
 addBtn.addEventListener("click", calculate.bind(this, "ADD"));
 subtractBtn.addEventListener("click", calculate.bind(this, "SUBTRACT"));
 multiplyBtn.addEventListener("click", calculate.bind(this, "MULTIPLY"));
