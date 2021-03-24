@@ -160,3 +160,8 @@ const multiply = () => {
 const divide = () => {
 	calculateResult("DIVIDE");
 };
+
+addBtn.addEventListener("click", calculate.bind(this, "ADD"));
+subtractBtn.addEventListener("click", calculate.bind(this, "SUBTRACT"));
+multiplyBtn.addEventListener("click", calculate.bind(this, "MULTIPLY"));
+divideBtn.addEventListener("click", calculate.bind(this, "DIVIDE"));
