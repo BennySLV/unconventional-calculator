@@ -13,6 +13,7 @@ const addBtn = document.getElementById("btn-add");
 const subtractBtn = document.getElementById("btn-subtract");
 const multiplyBtn = document.getElementById("btn-multiply");
 const divideBtn = document.getElementById("btn-divide");
+const clearBtn = document.getElementById("btn-clear");
 
 const currentResultOutput = document.getElementById("current-result");
 const currentCalculationOutput = document.getElementById("current-calculation");
@@ -192,7 +193,20 @@ const calculate = (operation) => {
 	writeToLog(operation, initialResult, enteredNumber, currentResult);
 };
 
+/**
+ * Clear the input box
+ * and any past calculations.
+ */
+const clearResult = () => {
+	if (currentResult !== 0) {
+		userInput.value = "";
+		currentResult = 0;
+		outputResult(currentResult, 0);
+	}
+};
+
 addBtn.addEventListener("click", calculate.bind(this, "ADD"));
 subtractBtn.addEventListener("click", calculate.bind(this, "SUBTRACT"));
 multiplyBtn.addEventListener("click", calculate.bind(this, "MULTIPLY"));
 divideBtn.addEventListener("click", calculate.bind(this, "DIVIDE"));
+clearBtn.addEventListener("click", clearResult);
