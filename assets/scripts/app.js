@@ -136,3 +136,27 @@ const calculateResult = (calculationType) => {
 		);
 	}
 };
+
+/**
+ * All basic calculator functions.
+ *
+ * These are all needed as part
+ * of the binding for each
+ * button's associated event
+ * listener.
+ */
+const add = () => {
+	calculateResult("ADD");
+};
+
+const subtract = () => {
+	calculateResult("SUBTRACT");
+};
+
+const multiply = () => {
+	calculateResult("MULTIPLY");
+};
+
+const divide = () => {
+	calculateResult("DIVIDE");
+};
