@@ -20,6 +20,11 @@ const keypad = document.getElementById("keypad");
 const currentResultOutput = document.getElementById("current-result");
 const currentCalculationOutput = document.getElementById("current-calculation");
 
+/**
+ * Show the keypad when the
+ * "Show keypad:" checkbox
+ * has been checked.
+ */
 const showKeypad = () => {
 	if (showKeypadCheckbox.checked == true) {
 		keypad.style.display = "block";
