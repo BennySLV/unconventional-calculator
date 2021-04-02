@@ -219,7 +219,7 @@ const calculate = (operation) => {
  */
 const clearInput = () => {
 	if (userInput.value !== "") {
-		userInput.value = "";
+		userInput.value = "0";
 	}
 };
 
