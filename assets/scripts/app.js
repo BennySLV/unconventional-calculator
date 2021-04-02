@@ -229,7 +229,7 @@ const clearInput = () => {
  */
 const clearResult = () => {
 	if (currentResult !== 0) {
-		userInput.value = "";
+		userInput.value = "0";
 		currentResult = 0;
 		outputResult(currentResult, 0);
 	}
