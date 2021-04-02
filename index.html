@@ -19,13 +19,37 @@
 
 		<section id="calculator">
 			<input type="number" id="input-number" />
+			<div id="keypad">
+				<div id="keypad-row-1">
+					<button type="button" id="btn-1">1</button>
+					<button type="button" id="btn-2">2</button>
+					<button type="button" id="btn-3">3</button>
+				</div>
+				<div id="keypad-row-2">
+					<button type="button" id="btn-4">4</button>
+					<button type="button" id="btn-5">5</button>
+					<button type="button" id="btn-6">6</button>
+				</div>
+				<div id="keypad-row-3">
+					<button type="button" id="btn-7">7</button>
+					<button type="button" id="btn-8">8</button>
+					<button type="button" id="btn-9">9</button>
+				</div>
+				<div id="keypad-row-4">
+					<button type="button" id="btn-0">0</button>
+				</div>
+			</div>
 			<div id="calc-actions">
 				<button type="button" id="btn-add">+</button>
 				<button type="button" id="btn-subtract">-</button>
 				<button type="button" id="btn-multiply">*</button>
 				<button type="button" id="btn-divide">/</button>
 			</div>
-			<div id="additional-actions">
+			<div id="show-keypad">
+				<p>Show keypad:</p>
+				<input type="checkbox" id="show-keypad-checkbox" />
+			</div>
+			<div id="additionalactions">
 				<button type="button" id="btn-clear">C</button>
 			</div>
 		</section>
