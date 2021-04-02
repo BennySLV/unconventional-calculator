@@ -16,6 +16,7 @@ const clearBtn = document.getElementById("btn-clear");
 
 const showKeypadCheckbox = document.getElementById("show-keypad-checkbox");
 const keypad = document.getElementById("keypad");
+const keypadButtons = document.querySelectorAll(".keypad-button");
 
 const currentResultOutput = document.getElementById("current-result");
 const currentCalculationOutput = document.getElementById("current-calculation");
@@ -28,8 +29,21 @@ const currentCalculationOutput = document.getElementById("current-calculation");
 const showKeypad = () => {
 	if (showKeypadCheckbox.checked == true) {
 		keypad.style.display = "block";
+		enableKeypad();
 	} else {
 		keypad.style.display = "none";
+	}
+};
+
+/**
+ * Enable the keypad
+ * when shown in the application.
+ */
+const enableKeypad = () => {
+	for (let i = 0; i < keypadButtons.length; i++) {
+		keypadButtons[i].addEventListener("click", () => {
+			userInput.value += parseInt(keypadButtons[i].textContent);
+		});
 	}
 };
 
@@ -224,7 +238,7 @@ const calculate = (operation) => {
  */
 const clearInput = () => {
 	if (userInput.value !== "") {
-		userInput.value = "0";
+		userInput.value = "";
 	}
 };
 
@@ -234,7 +248,7 @@ const clearInput = () => {
  */
 const clearResult = () => {
 	if (currentResult !== 0) {
-		userInput.value = "0";
+		userInput.value = "";
 		currentResult = 0;
 		outputResult(currentResult, 0);
 	}
