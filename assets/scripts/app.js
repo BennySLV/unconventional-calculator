@@ -7,7 +7,6 @@
  * @author Maximillian Schwarzmueller, Ben Silveston, Stephen Yeboah
  * @version 1.0
  */
-
 const userInput = document.getElementById("input-number");
 const addBtn = document.getElementById("btn-add");
 const subtractBtn = document.getElementById("btn-subtract");
@@ -15,8 +14,19 @@ const multiplyBtn = document.getElementById("btn-multiply");
 const divideBtn = document.getElementById("btn-divide");
 const clearBtn = document.getElementById("btn-clear");
 
+const showKeypadCheckbox = document.getElementById("show-keypad-checkbox");
+const keypad = document.getElementById("keypad");
+
 const currentResultOutput = document.getElementById("current-result");
 const currentCalculationOutput = document.getElementById("current-calculation");
+
+const showKeypad = () => {
+	if (showKeypadCheckbox.checked == true) {
+		keypad.style.display = "block";
+	} else {
+		keypad.style.display = "none";
+	}
+};
 
 /**
  * Output the result for a given calculation.
@@ -225,6 +235,7 @@ const clearResult = () => {
 	}
 };
 
+showKeypadCheckbox.addEventListener("click", showKeypad);
 addBtn.addEventListener("click", calculate.bind(this, "ADD"));
 subtractBtn.addEventListener("click", calculate.bind(this, "SUBTRACT"));
 multiplyBtn.addEventListener("click", calculate.bind(this, "MULTIPLY"));
