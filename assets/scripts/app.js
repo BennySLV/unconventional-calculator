@@ -7,19 +7,19 @@
  * @author Maximillian Schwarzmueller, Ben Silveston, Stephen Yeboah
  * @version 1.0
  */
-const userInput = document.getElementById("input-number");
-const addBtn = document.getElementById("btn-add");
-const subtractBtn = document.getElementById("btn-subtract");
-const multiplyBtn = document.getElementById("btn-multiply");
-const divideBtn = document.getElementById("btn-divide");
-const clearBtn = document.getElementById("btn-clear");
+const userInput = document.getElementById('input-number');
+const addBtn = document.getElementById('btn-add');
+const subtractBtn = document.getElementById('btn-subtract');
+const multiplyBtn = document.getElementById('btn-multiply');
+const divideBtn = document.getElementById('btn-divide');
+const clearBtn = document.getElementById('btn-clear');
 
-const showKeypadCheckbox = document.getElementById("show-keypad-checkbox");
-const keypad = document.getElementById("keypad");
-const keypadButtons = document.querySelectorAll(".keypad-button");
+const showKeypadCheckbox = document.getElementById('show-keypad-checkbox');
+const keypad = document.getElementById('keypad');
+const keypadButtons = document.querySelectorAll('.keypad-button');
 
-const currentResultOutput = document.getElementById("current-result");
-const currentCalculationOutput = document.getElementById("current-calculation");
+const currentResultOutput = document.getElementById('current-result');
+const currentCalculationOutput = document.getElementById('current-calculation');
 
 /**
  * Show the keypad when the
@@ -27,11 +27,11 @@ const currentCalculationOutput = document.getElementById("current-calculation");
  * has been checked.
  */
 const showKeypad = () => {
-	if (showKeypadCheckbox.checked == true) {
-		keypad.style.display = "block";
+	if (showKeypadCheckbox.checked) {
+		keypad.style.display = 'block';
 		enableKeypad();
 	} else {
-		keypad.style.display = "none";
+		keypad.style.display = 'none';
 	}
 };
 
@@ -41,7 +41,7 @@ const showKeypad = () => {
  */
 const enableKeypad = () => {
 	for (let i = 0; i < keypadButtons.length; i++) {
-		keypadButtons[i].addEventListener("click", () => {
+		keypadButtons[i].addEventListener('click', () => {
 			userInput.value += parseInt(keypadButtons[i].textContent);
 		});
 	}
@@ -113,7 +113,7 @@ const writeToLog = (
 		operation: operationIdentifier,
 		previousResult: previousResult,
 		number: operationNumber,
-		result: newResult,
+		result: newResult
 	};
 	logEntries.push(logEntry);
 	console.log(logEntries);
@@ -133,10 +133,10 @@ const writeToLog = (
  */
 const calculateResult = (calculationType) => {
 	if (
-		(calculationType !== "ADD" &&
-			calculationType !== "SUBTRACT" &&
-			calculationType !== "MULTIPLY" &&
-			calculationType !== "DIVIDE") ||
+		(calculationType !== 'ADD' &&
+			calculationType !== 'SUBTRACT' &&
+			calculationType !== 'MULTIPLY' &&
+			calculationType !== 'DIVIDE') ||
 		!enteredNumber
 	) {
 		return;
@@ -144,26 +144,21 @@ const calculateResult = (calculationType) => {
 		const enteredNumber = getUserNumberInput();
 		const initialResult = currentResult;
 		let mathsOperator;
-		if (calculationType === "ADD") {
+		if (calculationType === 'ADD') {
 			currentResult += enteredNumber;
-			mathsOperator = "+";
-		} else if (calculationType === "SUBTRACT") {
+			mathsOperator = '+';
+		} else if (calculationType === 'SUBTRACT') {
 			currentResult -= enteredNumber;
-			mathsOperator = "-";
-		} else if (calculationType === "MULTIPLY") {
+			mathsOperator = '-';
+		} else if (calculationType === 'MULTIPLY') {
 			currentResult *= enteredNumber;
-			mathsOperator = "*";
-		} else if (calculationType === "DIVIDE") {
+			mathsOperator = '*';
+		} else if (calculationType === 'DIVIDE') {
 			currentResult /= enteredNumber;
-			mathsOperator = "/";
+			mathsOperator = '/';
 		}
 		createAndWriteOutput(mathsOperator, initialResult, enteredNumber);
-		writeToLog(
-			calculationType,
-			initialResult,
-			enteredNumber,
-			currentResult
-		);
+		writeToLog(calculationType, initialResult, enteredNumber, currentResult);
 	}
 };
 
@@ -176,19 +171,19 @@ const calculateResult = (calculationType) => {
  * listener.
  */
 const add = () => {
-	calculateResult("ADD");
+	calculateResult('ADD');
 };
 
 const subtract = () => {
-	calculateResult("SUBTRACT");
+	calculateResult('SUBTRACT');
 };
 
 const multiply = () => {
-	calculateResult("MULTIPLY");
+	calculateResult('MULTIPLY');
 };
 
 const divide = () => {
-	calculateResult("DIVIDE");
+	calculateResult('DIVIDE');
 };
 
 /**
@@ -205,21 +200,21 @@ const calculate = (operation) => {
 	const enteredNumber = getUserNumberInput();
 	const initialResult = currentResult;
 	let operator;
-	if (operation === "ADD") {
+	if (operation === 'ADD') {
 		currentResult += enteredNumber;
-		operator = "+";
+		operator = '+';
 		clearInput();
-	} else if (operation === "SUBTRACT") {
+	} else if (operation === 'SUBTRACT') {
 		currentResult -= enteredNumber;
-		operator = "-";
+		operator = '-';
 		clearInput();
-	} else if (operation === "MULTIPLY") {
+	} else if (operation === 'MULTIPLY') {
 		currentResult *= enteredNumber;
-		operator = "*";
+		operator = '*';
 		clearInput();
-	} else if (operation === "DIVIDE") {
+	} else if (operation === 'DIVIDE') {
 		currentResult /= enteredNumber;
-		operator = "/";
+		operator = '/';
 		clearInput();
 	}
 	createAndWriteOutput(operator, initialResult, enteredNumber);
@@ -237,8 +232,8 @@ const calculate = (operation) => {
  * entire calculation.
  */
 const clearInput = () => {
-	if (userInput.value !== "") {
-		userInput.value = "";
+	if (userInput.value !== '') {
+		userInput.value = '';
 	}
 };
 
@@ -248,15 +243,15 @@ const clearInput = () => {
  */
 const clearResult = () => {
 	if (currentResult !== 0) {
-		userInput.value = "";
+		userInput.value = '';
 		currentResult = 0;
 		outputResult(currentResult, 0);
 	}
 };
 
-showKeypadCheckbox.addEventListener("click", showKeypad);
-addBtn.addEventListener("click", calculate.bind(this, "ADD"));
-subtractBtn.addEventListener("click", calculate.bind(this, "SUBTRACT"));
-multiplyBtn.addEventListener("click", calculate.bind(this, "MULTIPLY"));
-divideBtn.addEventListener("click", calculate.bind(this, "DIVIDE"));
-clearBtn.addEventListener("click", clearResult);
+showKeypadCheckbox.addEventListener('click', showKeypad);
+addBtn.addEventListener('click', calculate.bind(this, 'ADD'));
+subtractBtn.addEventListener('click', calculate.bind(this, 'SUBTRACT'));
+multiplyBtn.addEventListener('click', calculate.bind(this, 'MULTIPLY'));
+divideBtn.addEventListener('click', calculate.bind(this, 'DIVIDE'));
+clearBtn.addEventListener('click', clearResult);
